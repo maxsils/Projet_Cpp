@@ -19,9 +19,7 @@ class Noeud {
         suivant=suiv;
         }
 
-        ~Noeud(){
-            delete suivant;
-        }
+        ~Noeud(){};
 
         T getInfo(){
             return info;
