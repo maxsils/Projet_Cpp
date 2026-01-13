@@ -1,9 +1,12 @@
 ```mermaid
-flowchart TD
-    A[Christmas] -->|Get money| B(Go shopping)
-    B --> C{Let me think}
-    C -->|One| D[Laptop]
-    C -->|Two| E[iPhone]
-    C -->|Three| F[fa:fa-car Car]
+---
+config:
+  layout: elk
+---
+flowchart TB
+    A["Bibliotèque"] --> n2["Adhérent"] & n3["Livre"]
+    n3 --> n4["BD"] & n5["Roman"] & n6["Receuil de poésie"] & n7["Pièce de théatre"]
+
+    n2@{ shape: rect}
   
 ```
