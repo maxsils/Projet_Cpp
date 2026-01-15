@@ -54,7 +54,7 @@ public:
         tete=nouveau;
     }
 
-    void suprimer(T info){
+    void supprimer(T info){
         //Liste vide
         if(tete==nullptr) throw "Liste vide";
 
