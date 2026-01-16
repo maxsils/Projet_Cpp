@@ -1,9 +1,9 @@
 #include "Adherent.h"
 
 Adherent::Adherent(){
-    nom=nullptr;
-    prenom=nullptr;
-    adresse=nullptr;
+    nom="";
+    prenom="";
+    adresse="";
     limite_emprunt=-1;
     livres_empruntes=Liste<Livre>();
 }

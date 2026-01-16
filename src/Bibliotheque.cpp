@@ -1,9 +1,9 @@
 #include "Bibliotheque.h"
 
 Bibliotheque::Bibliotheque(){
-    code=NULL;
-    nom=nullptr;
-    adresse=nullptr;
+    code=-1;
+    nom="";
+    adresse="";
     liste_livres=Liste<Livre>();
 }
 

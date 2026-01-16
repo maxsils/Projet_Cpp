@@ -21,7 +21,7 @@ class Noeud {
 
         ~Noeud(){};
 
-        T getInfo(){
+        const T& getInfo() const {
             return info;
         }
 
