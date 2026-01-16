@@ -36,8 +36,8 @@ void Bibliotheque::achatLivre(Livre& livre){//Ajouter une securite : bloquer l'a
 
 void Bibliotheque::supprimerLivre(int code_livre){
     try{
-        Livre* aSupprimer=getLivre(code_livre);
-        liste_livres.supprimer(aSupprimer);
+        Livre& aSupprimer=getLivre(code_livre);
+        liste_livres.supprimer(&aSupprimer);
     }
     catch(const char*e){
         cout<<e;
@@ -48,12 +48,12 @@ void Bibliotheque::rendreLivresPretes(){
     
 }
 
-Livre* Bibliotheque::getLivre(int code_livre){
+Livre& Bibliotheque::getLivre(int code_livre){
     Noeud<Livre*>*courant=liste_livres.getTete();
 
     while(courant!=nullptr&&courant->getInfo()->getcode()!=code_livre){
         courant=courant->getSuivant();
     }
     if(courant==nullptr) throw "Ce livre n'existe pas";
-    return courant->getInfo();
+    return *courant->getInfo();
 }

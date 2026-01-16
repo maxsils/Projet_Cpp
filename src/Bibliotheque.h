@@ -23,7 +23,7 @@ class Bibliotheque{
         void supprimerLivre(int code_livre);
         void rendreLivresPretes();
 
-        Livre* getLivre(int code_livre);
+        Livre& getLivre(int code_livre);
 };
 
 #endif
