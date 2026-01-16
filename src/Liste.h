@@ -34,7 +34,7 @@ public:
 
     void supprimer(T info){
         //Liste vide
-        if(tete==nullptr) throw "Liste vide";
+        if(tete==nullptr) throw string("Liste vide");
 
         Noeud<T>*precedent=nullptr;
         Noeud<T>*courant=tete;
@@ -51,7 +51,7 @@ public:
             courant=courant->getSuivant();  
         }
         
-        if(courant==nullptr) throw "L'element n'a pas ete trouve";
+        if(courant==nullptr) throw string("L'element n'a pas ete trouve");
 
         precedent->setSuivant(courant->getSuivant());
         delete courant;

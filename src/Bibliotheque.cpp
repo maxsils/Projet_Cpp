@@ -33,7 +33,13 @@ void Bibliotheque::demanderLivre(int ISBN,int code_bibliotheque){
     //A finir
 }
 
-void Bibliotheque::achatLivre(Livre& livre){//Ajouter une securite : bloquer l'ajout du meme livre ou livre-1
+void Bibliotheque::achatLivre(Livre& livre){
+    if(livre.getcode()==-1) throw string("Erreur : Tentative d'ajout d'un livre sans donnees (code -1)\n");
+    Noeud<Livre*>*courant=this->liste_livres.getTete();
+    while(courant!=nullptr){
+        if(courant->getInfo()->getcode()==livre.getcode()) throw string("Achat deja fait\n");
+        courant=courant->getSuivant();
+    }
     this->liste_livres.ajouter(&livre);
 }
 
@@ -42,7 +48,7 @@ void Bibliotheque::supprimerLivre(int code_livre){
         Livre& aSupprimer=getLivre(code_livre);
         liste_livres.supprimer(&aSupprimer);
     }
-    catch(const char*e){
+    catch(string e){
         cout<<e;
     }
 }
@@ -57,6 +63,6 @@ Livre& Bibliotheque::getLivre(int code_livre){
     while(courant!=nullptr&&courant->getInfo()->getcode()!=code_livre){
         courant=courant->getSuivant();
     }
-    if(courant==nullptr) throw "Ce livre n'existe pas";
+    if(courant==nullptr) throw string("Ce livre n'existe pas\n");
     return *courant->getInfo();
 }
