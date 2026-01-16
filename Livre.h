@@ -5,7 +5,7 @@
 using namespace std;
 
 class Livre{
-    private :
+    protected :
         int code;
         string auteur;
         string titre;
@@ -14,14 +14,25 @@ class Livre{
         string publics;
         string etat;
     public : 
-        Livre(int,string,string,string,int,string);
+        // Constructeurs
+        Livre();
+        Livre(int code_livre,string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre);
+
+        // Permet de changer d'etat ("libre","emprunté","prêté")
         void changer_etat(string);
+        void etatlibre();
+        void etatemprunte();
+        void etatprete();
         
         // Virtual functions
         virtual void affiche();
 
-        // friend operators
+        // friend operator
         friend ostream& operator<<(ostream& out, Livre &L);
+
+        // getters
+        int getcode();
+        string getetat();
     };
 
 #endif
