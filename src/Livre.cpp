@@ -28,6 +28,10 @@ ostream& operator<<(ostream& out, Livre &L){
     out << "Code : "<< L.code << ", Auteur : " << L.auteur <<", Titre : "<< L.titre <<
     ", Editeur : "<< L.editeur << ", ISBN : " <<L.isbn<<", Public :"<<L.publics<<", Etat : "<<L.etat;
 }
+bool Livre :: operator== (const Livre&, const Livre&){
+
+}
+
 void Livre :: changer_etat(string etat){
     this -> etat = etat;
 }

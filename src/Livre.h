@@ -30,6 +30,7 @@ class Livre{
 
         // friend operator
         friend ostream& operator<<(ostream& out, Livre &L);
+        friend Livre operator== (const Livre&, const Livre&);
 
         // getters
         int getcode();
