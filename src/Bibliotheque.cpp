@@ -1,15 +1,18 @@
 #include "Bibliotheque.h"
 
+int Bibliotheque::compteur = 1;
+
 Bibliotheque::Bibliotheque(){
     code=-1;
     nom="";
     adresse="";
 }
 
-Bibliotheque::Bibliotheque(int code,string nom,string adresse){
-    this->code=code;
+Bibliotheque::Bibliotheque(string nom,string adresse){
+    this->code=compteur;
     this->nom=nom;
     this->adresse=adresse;
+    compteur++;
 }
 
 void Bibliotheque::afficherLivres(){

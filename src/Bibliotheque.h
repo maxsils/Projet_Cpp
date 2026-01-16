@@ -8,16 +8,16 @@ using namespace std;
 
 class Bibliotheque{
     private:
+        static int compteur;
         int code;
         string nom,adresse;
         Liste<Livre*> liste_livres;
     public:
         Bibliotheque();
-        Bibliotheque(int code_bibliotheque,string nom,string adresse);
+        Bibliotheque(string nom,string adresse);
 
         void afficherLivres();
         void afficherLivres(string categorie);
-        //bool Livre EstLibre(int code_livre);
         void demanderLivre(int ISBN,int code_bibliotheque);
         void achatLivre(Livre& livre);
         void supprimerLivre(int code_livre);
