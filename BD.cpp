@@ -9,3 +9,12 @@ void BD :: affiche(){
     Livre::affiche();
     cout<<"Dessinateur : "<<dessinateur<<endl;
 }
+
+string BD :: getdessinateur(){
+    return dessinateur;
+}
+
+ostream& operator<<(ostream& out, BD &bd){
+    out << (Livre&)bd;
+    out << ", Dessinateur : "<< bd.getdessinateur();
+}

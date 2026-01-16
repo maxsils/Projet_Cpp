@@ -11,6 +11,8 @@ class BD : public Livre {
     public :
         BD(const Livre&l, string);
         void affiche();
+        string getdessinateur();
+        friend ostream& operator<<(ostream& out, BD &bd);
 };
 
 #endif
