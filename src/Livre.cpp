@@ -24,12 +24,12 @@ Livre :: Livre(string a,string t,string e,int i,string p){
     compteur++;
 }
 
-ostream& operator<<(ostream& out, Livre &L){
+ostream& operator<<(ostream& out, const Livre &L){
     out << "Code : "<< L.code << ", Auteur : " << L.auteur <<", Titre : "<< L.titre <<
     ", Editeur : "<< L.editeur << ", ISBN : " <<L.isbn<<", Public :"<<L.publics<<", Etat : "<<L.etat;
 }
-bool Livre :: operator== (const Livre&, const Livre&){
-
+bool Livre :: operator== (const Livre& L){
+    return (this -> code== L.code);
 }
 
 void Livre :: changer_etat(string etat){

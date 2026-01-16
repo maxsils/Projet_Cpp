@@ -10,7 +10,7 @@ class Piece_theatre : public Livre {
         int siecle;
     public :
         Piece_theatre();
-        Piece_theatre(const Livre&l, int siecle);
+        Piece_theatre(const Livre&l, int siecle_piece);
         void affiche();
         friend ostream& operator<<(ostream& out, Piece_theatre &pt);
         int getsiecle();

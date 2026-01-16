@@ -9,6 +9,7 @@ class BD : public Livre {
     private :
         string dessinateur;
     public :
+        BD();
         BD(const Livre&l, string);
         void affiche();
         string getdessinateur();

@@ -29,8 +29,8 @@ class Livre{
         virtual void affiche();
 
         // friend operator
-        friend ostream& operator<<(ostream& out, Livre &L);
-        friend Livre operator== (const Livre&, const Livre&);
+        friend ostream& operator<<(ostream& out, const Livre &L);
+        bool operator== (const Livre&);
 
         // getters
         int getcode();
