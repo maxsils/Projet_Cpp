@@ -12,7 +12,7 @@ BD :: BD(const Livre&l, string d):Livre(l){
 
 void BD :: affiche(){
     Livre::affiche();
-    cout<<"Dessinateur : "<<dessinateur<<endl;
+    cout<<", Dessinateur : "<<dessinateur<<endl;
 }
 
 string BD :: getdessinateur(){
@@ -22,4 +22,5 @@ string BD :: getdessinateur(){
 ostream& operator<<(ostream& out, BD &bd){
     out << (Livre&)bd;
     out << ", Dessinateur : "<< bd.getdessinateur();
+    return out;
 }

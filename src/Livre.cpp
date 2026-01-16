@@ -27,8 +27,9 @@ Livre :: Livre(string a,string t,string e,int i,string p){
 ostream& operator<<(ostream& out, const Livre &L){
     out << "Code : "<< L.code << ", Auteur : " << L.auteur <<", Titre : "<< L.titre <<
     ", Editeur : "<< L.editeur << ", ISBN : " <<L.isbn<<", Public :"<<L.publics<<", Etat : "<<L.etat;
+    return out;
 }
-bool Livre :: operator== (const Livre& L){
+bool Livre :: operator== (const Livre& L) const{
     return (this -> code== L.code);
 }
 
@@ -38,10 +39,10 @@ void Livre :: changer_etat(string etat){
 
 void Livre :: affiche(){
     cout<<"Code : "<< code << ", Auteur : " << auteur <<", Titre : "<< titre <<
-    ", Editeur : "<< editeur << ", ISBN : " << isbn<<", Public :"<<publics<<", Etat : "<< etat<<endl;
+    ", Editeur : "<< editeur << ", ISBN : " << isbn<<", Public :"<<publics<<", Etat : "<< etat;
 }
 
-int Livre :: getcode(){
+int Livre :: getcode() const{
     return code;
 }
 
