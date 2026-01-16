@@ -1,9 +1,8 @@
 #include "BD.h"
 #include <cmath>
 
-BD :: BD(){
-    Livre();
-    dessinateur=nullptr;
+BD :: BD() : Livre(){
+    dessinateur="";
 }
 
 BD :: BD(const Livre&l, string d):Livre(l){

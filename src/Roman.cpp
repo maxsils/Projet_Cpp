@@ -1,9 +1,8 @@
 #include "Roman.h"
 #include <cmath>
 
-Roman :: Roman(){
-    Livre();
-    genre=nullptr;
+Roman :: Roman(): Livre(){
+    genre="";
 }
 
 Roman :: Roman(const Livre&l, string g):Livre(l){
@@ -22,4 +21,5 @@ string Roman :: getgenre(){
 ostream& operator<<(ostream& out, Roman &r){
     out << (Livre&)r;
     out << ", Genre : "<< r.getgenre();
+    return out;
 }

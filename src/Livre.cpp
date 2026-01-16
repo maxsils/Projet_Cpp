@@ -5,12 +5,12 @@ int Livre::compteur = 1;
 
 Livre :: Livre(){
     code = -1;
-    auteur = nullptr;
-    titre = nullptr;
-    editeur = nullptr;
+    auteur = "";
+    titre = "";
+    editeur = "";
     isbn = -1;
-    publics = nullptr;
-    etat = nullptr;
+    publics = "";
+    etat = "";
 }
 
 Livre :: Livre(string a,string t,string e,int i,string p){
