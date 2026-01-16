@@ -8,6 +8,9 @@ using namespace std;
 class BD : public Livre {
     private :
         string dessinateur;
+    public :
+        BD(const Livre&l, string);
+        void affiche();
 };
 
 #endif

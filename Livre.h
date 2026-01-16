@@ -14,7 +14,14 @@ class Livre{
         string publics;
         string etat;
     public : 
+        Livre(int,string,string,string,int,string);
+        void changer_etat(string);
+        
+        // Virtual functions
+        virtual void affiche();
 
-};
+        // friend operators
+        friend ostream& operator<<(ostream& out, Livre &L);
+    };
 
 #endif
