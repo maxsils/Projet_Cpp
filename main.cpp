@@ -6,6 +6,7 @@
 #include "src/Recueil_poesie.h"
 #include "src/Roman.h"
 #include "src/Bibliotheque.h"
+#include "src/Reseau.h"
 
 int main() {
     // Liste<int> liste;
@@ -39,20 +40,38 @@ int main() {
     //     cout<<e<<"\n";
     // }
     // cout<<"FIN";
-    std::cout << "Lancement du programme..." << std::endl;
-    BD bd;
-    Album album;
-    Recueil_poesie recueil_poesie;
-    Bibliotheque biblio;
-    biblio.achatLivre(bd);
-    biblio.achatLivre(album);
-    biblio.achatLivre(recueil_poesie);
-    biblio.afficherLivres();
+    // std::cout << "Lancement du programme..." << std::endl;
+    // BD bd;
+    // Album album;
+    // Recueil_poesie recueil_poesie;
+    // Bibliotheque biblio;
+    // try{
+    // biblio.achatLivre(bd);
+    // biblio.achatLivre(album);
+    // biblio.achatLivre(recueil_poesie);
+    // biblio.afficherLivres();
+    // }
+    // catch(string a){cout<<a;}
 
-    cout<<"Essaie categorie BD"<<endl;
-    biblio.afficherLivres("BD");
-    cout<<"Essaie categorie Recueil de poesie"<<endl;
-    biblio.afficherLivres("Recueil de poesie");
-    cout<<bd<<endl;
-    cout<<recueil_poesie<<endl;
+    // try{biblio.supprimerLivre(0);}
+    // catch(string e){cout<<e;}
+
+    // cout<<"Essaie categorie BD"<<endl;
+    // biblio.afficherLivres("BD");
+    // cout<<"Essaie categorie Recueil de poesie"<<endl;
+    // biblio.afficherLivres("Recueil de poesie");
+    Reseau res2=Reseau("i");
+    Reseau reseau=Reseau("Biblio Super");
+    
+    Bibliotheque biblio1=Bibliotheque("Lille","rue de Lille");
+    Bibliotheque biblio2=Bibliotheque("Marseille","rue de Marseille");
+
+    reseau.ajouterBibliotheque(biblio1);
+    reseau.ajouterBibliotheque(biblio2);
+
+    reseau.afficher();
+    cout<<"Essaie de suppression\n";
+    reseau.supprimerBibliotheque(biblio1);
+    reseau.afficher();
+    cout<<res2;
 }
