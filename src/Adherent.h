@@ -12,7 +12,7 @@ class Adherent
         string nom,prenom,adresse;
         int num_adherent;
         int code_bibliotheque;
-        Liste<Livre> livres_empruntes;
+        Liste<Livre*> livres_empruntes;
         int limite_emprunt;
     public:
         Adherent();

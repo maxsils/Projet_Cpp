@@ -24,6 +24,6 @@ ostream& operator<<(ostream& out, Roman &r){
     return out;
 }
 
-string getCategorie(){
+string Roman::getCategorie(){
     return "Roman";
 }

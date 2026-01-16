@@ -24,6 +24,6 @@ ostream& operator<<(ostream& out, Recueil_poesie &rp){
     return out;
 }
 
-string getCategorie(){
-    return "Receuil de poesie";
+string Recueil_poesie::getCategorie(){
+    return "Recueil de poesie";
 }

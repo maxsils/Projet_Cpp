@@ -5,7 +5,6 @@ Adherent::Adherent(){
     prenom="";
     adresse="";
     limite_emprunt=-1;
-    livres_empruntes=Liste<Livre>();
 }
 
 Adherent::Adherent(string nom,string prenom,string adresse,int num_adherent,int code_bibliotheque,int limite_emprunt){
@@ -15,7 +14,6 @@ Adherent::Adherent(string nom,string prenom,string adresse,int num_adherent,int 
     this->num_adherent=num_adherent;
     this->code_bibliotheque=code_bibliotheque;
     this->limite_emprunt=limite_emprunt;
-    livres_empruntes=Liste<Livre>();
 }
 
 void Adherent::empruntLivre(int code_livre){
