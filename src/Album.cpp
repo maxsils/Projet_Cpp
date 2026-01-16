@@ -23,3 +23,7 @@ ostream& operator<<(ostream& out, Album &al){
     out << ", Illustrations : "<< al.getillustrations();
     return out;
 }
+
+string Album::getCategorie(){
+    return "Album";
+}

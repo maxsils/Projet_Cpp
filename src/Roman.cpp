@@ -23,3 +23,7 @@ ostream& operator<<(ostream& out, Roman &r){
     out << ", Genre : "<< r.getgenre();
     return out;
 }
+
+string getCategorie(){
+    return "Roman";
+}

@@ -25,6 +25,10 @@ class Noeud {
             return info;
         }
 
+        T& getInfo(){
+            return info;
+        }
+
         Noeud*getSuivant(){
             return suivant;
         }

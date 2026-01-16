@@ -23,3 +23,7 @@ ostream& operator<<(ostream& out, Piece_theatre &pt){
     out << ", Siecle : "<< pt.getsiecle();
     return out;
 }
+
+string Piece_theatre::getCategorie(){
+    return "Piece de teatre";
+}

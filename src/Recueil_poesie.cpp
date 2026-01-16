@@ -23,3 +23,7 @@ ostream& operator<<(ostream& out, Recueil_poesie &rp){
     out << ", Indicateur : "<< rp.getindicateur();
     return out;
 }
+
+string getCategorie(){
+    return "Receuil de poesie";
+}

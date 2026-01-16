@@ -36,6 +36,7 @@ class Livre{
         // getters
         int getcode() const;
         string getetat();
+        string virtual getCategorie() = 0;
     };
 
 #endif

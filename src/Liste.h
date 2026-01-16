@@ -22,31 +22,9 @@ public:
         }
     }
 
-    Liste(const Liste<T>& liste){
-        tete=nullptr;
-        if(liste.tete==nullptr) return;
+    Liste(const Liste<T>&) = delete;
 
-        this->tete=new Noeud<T>(liste.tete->getInfo());
-        Noeud<T>*courant=tete;
-        Noeud<T>*courantCopier=liste.tete->getSuivant();
-
-        while(courantCopier!=nullptr){
-            Noeud<T>*nouveau=new Noeud<T>(courantCopier->getInfo());
-            courant->setSuivant(nouveau);
-            courant=nouveau;
-            courantCopier=courantCopier->getSuivant();
-        }
-    }
-
-    Liste&operator=(const Liste<T>&liste){
-        if(this!=&liste){
-            Liste<T>copie(liste);
-            Noeud<T>*aSupprimer=tete;
-            tete=copie.getTete();
-            copie.tete=aSupprimer;
-        }
-        return *this;
-    }
+    Liste&operator=(const Liste<T>&liste)=delete;
 
     void ajouter(T info){
         Noeud<T>* nouveau = new Noeud<T>(info);
@@ -79,10 +57,10 @@ public:
         delete courant;
     }
 
-    void afficherTout(){
+    void afficherTout() const {
         Noeud<T>*courant=tete;
         while(courant!=nullptr){
-            cout<<courant->getInfo()<<"\n";
+            cout<<*courant->getInfo()<<"\n";
             courant=courant->getSuivant();
         }
     }

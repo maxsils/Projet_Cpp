@@ -14,6 +14,7 @@ class Album : public Livre {
         void affiche();
         friend ostream& operator<<(ostream& out, Album &al);
         string getillustrations();
+        string getCategorie();
 };
 
 #endif

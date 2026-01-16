@@ -23,3 +23,7 @@ ostream& operator<<(ostream& out, BD &bd){
     out << ", Dessinateur : "<< bd.getdessinateur();
     return out;
 }
+
+string BD::getCategorie(){
+    return "BD";
+}

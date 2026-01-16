@@ -14,6 +14,7 @@ class Recueil_poesie : public Livre {
         void affiche();
         string getindicateur();
         friend ostream& operator<<(ostream& out, Recueil_poesie &rp);
+        string getCategorie();
 };
 
 #endif

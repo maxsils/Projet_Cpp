@@ -14,6 +14,7 @@ class Piece_theatre : public Livre {
         void affiche();
         friend ostream& operator<<(ostream& out, Piece_theatre &pt);
         int getsiecle();
+        string getCategorie();
 };
 
 #endif

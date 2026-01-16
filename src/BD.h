@@ -14,6 +14,8 @@ class BD : public Livre {
         void affiche();
         string getdessinateur();
         friend ostream& operator<<(ostream& out, BD &bd);
+
+        string getCategorie();
 };
 
 #endif

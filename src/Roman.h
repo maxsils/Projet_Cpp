@@ -14,6 +14,7 @@ class Roman : public Livre {
         void affiche();
         string getgenre();
         friend ostream& operator<<(ostream& out, Roman &r);
+        string getCategorie();
 };
 
 #endif
