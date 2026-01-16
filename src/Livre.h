@@ -31,6 +31,7 @@ class Livre{
         // friend operator
         friend ostream& operator<<(ostream& out, const Livre &L);
         bool operator== (const Livre&) const;
+        bool operator!= (const Livre&) const;
 
         // getters
         int getcode() const;

@@ -8,6 +8,12 @@ using namespace std;
 class Roman : public Livre {
     private :
         string genre;
+    public :
+        Roman();
+        Roman(const Livre&l, string);
+        void affiche();
+        string getgenre();
+        friend ostream& operator<<(ostream& out, Roman &r);
 };
 
 #endif

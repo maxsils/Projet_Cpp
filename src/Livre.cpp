@@ -33,6 +33,10 @@ bool Livre :: operator== (const Livre& L) const{
     return (this -> code== L.code);
 }
 
+bool Livre :: operator!= (const Livre& L) const{
+    return (this -> code!= L.code);
+}
+
 void Livre :: changer_etat(string etat){
     this -> etat = etat;
 }
