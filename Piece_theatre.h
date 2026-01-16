@@ -8,6 +8,12 @@ using namespace std;
 class Piece_theatre : public Livre {
     private :
         int siecle;
+    public :
+        Piece_theatre();
+        Piece_theatre(const Livre&l, int siecle);
+        void affiche();
+        friend ostream& operator<<(ostream& out, Piece_theatre &pt);
+        int getsiecle();
 };
 
 #endif
