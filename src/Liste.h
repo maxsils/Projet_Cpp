@@ -59,29 +59,6 @@ public:
         delete courant;
     }
 
-    void enlever(T info){
-        //Liste vide
-        if(tete==nullptr) throw string("Liste vide");
-
-        Noeud<T>*precedent=nullptr;
-        Noeud<T>*courant=tete;
-
-        //Suppression du premiere noeud
-        if(courant->getInfo()==info){
-            tete=courant->getSuivant();
-            return;
-        }
-        //Cas general
-        while(courant!=nullptr&&(courant->getInfo()!=info)){
-            precedent=courant;
-            courant=courant->getSuivant();  
-        }
-        
-        if(courant==nullptr) throw string("L'element n'a pas ete trouve");
-
-        precedent->setSuivant(courant->getSuivant());
-    }
-
     void afficherTout() const {
         Noeud<T>*courant=tete;
         while(courant!=nullptr){

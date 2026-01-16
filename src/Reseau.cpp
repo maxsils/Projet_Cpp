@@ -1,14 +1,27 @@
 #include "Reseau.h"
 
-Reseau::Reseau(){};
+int Reseau::compteur=1;
+
+Reseau::Reseau(){
+    code=-1;
+    nom="";
+};
+
+Reseau::Reseau(string nom){
+    code=compteur;
+    this->nom=nom;
+    compteur++;
+}
 
 void Reseau::ajouterBibliotheque(Bibliotheque& biblio){
     liste_bibliotheques.ajouter(&biblio);
+    biblio.setReseau(this);
 }
 
 void Reseau::supprimerBibliotheque(Bibliotheque& biblio){
     try{
         liste_bibliotheques.supprimer(&biblio);
+        biblio.setReseau(nullptr);
     }
     catch(string e){
         cout<<e;
@@ -19,7 +32,14 @@ void Reseau::afficher() {
     liste_bibliotheques.afficherTout();
 }
 
+ostream& operator<<(ostream& out, const Reseau& reseau){
+    out<<"Code: "<<reseau.code<<", Nom : "<<reseau.nom;
+    return out;
+}
+
 bool Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeur){
+    if(this==nullptr) return false;                             //On teste que le reseau dont la bibliotheque appartient n'est pas nul
+
     Noeud<Bibliotheque*>*courant=liste_bibliotheques.getTete();
 
     // Parcours des bibliotheques
@@ -39,5 +59,6 @@ bool Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeur){
 }
 
 bool Reseau::traiterRetourPret(Livre& livre,Bibliotheque retourneur){
-    // A finir 
+    // A finir
+    return true;
 }

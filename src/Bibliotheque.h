@@ -15,7 +15,7 @@ class Bibliotheque{
         string nom,adresse;
         Liste<Livre*> catalogue;
         Liste<Livre*> liste_prets_recus;
-        Reseau reseau;
+        Reseau* reseau;
     public:
         // Constructeurs
         Bibliotheque();
@@ -24,10 +24,14 @@ class Bibliotheque{
         // Affichages
         void afficherLivres();
         void afficherLivres(string categorie);
+        friend ostream& operator<<(ostream& out, const Bibliotheque&biblio);
 
         // Getter
         Livre& getLivre(int code_livre);
         int getCode() const;
+
+        // Setter
+        void setReseau(Reseau* reseau);
 
         // Ajout et suppression de livres
         void achatLivre(Livre& livre);

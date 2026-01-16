@@ -30,6 +30,11 @@ void Bibliotheque::afficherLivres(string categorie){
     }
 }
 
+ostream& operator<<(ostream& out, const Bibliotheque& biblio){
+    out << "Code : "<< biblio.code << ", Nom : " << biblio.nom <<", Adresse : "<<biblio.adresse<<", Reseau : "<<*biblio.reseau;
+    return out;
+}
+
 Livre& Bibliotheque::getLivre(int code_livre){
     Noeud<Livre*>*courant=catalogue.getTete();
 
@@ -42,6 +47,10 @@ Livre& Bibliotheque::getLivre(int code_livre){
 
 int Bibliotheque::getCode() const {
     return code;
+}
+
+void Bibliotheque::setReseau(Reseau* reseau){
+    this->reseau=reseau;
 }
 
 void Bibliotheque::achatLivre(Livre& livre){
@@ -77,7 +86,7 @@ Livre* Bibliotheque::chercherLivrePretable(int ISBN){
 }
 
 bool Bibliotheque::demandePret(int ISBN){
-    return reseau.traiterDemandePret(ISBN,this);
+    return reseau->traiterDemandePret(ISBN,this);
 }
 
 void Bibliotheque::preterLivre(Livre& livre){
@@ -91,8 +100,8 @@ void Bibliotheque::recevoirPret(Livre& livre){
 
 void Bibliotheque::rendrePret(Livre& livre){
     if(livre.getetat()=="emprunter"){                   // Attention potentiel changement etat !!!!
-        catalogue.enlever(&livre);
-        liste_prets_recus.enlever(&livre);
+        catalogue.supprimer(&livre);
+        liste_prets_recus.supprimer(&livre);
         livre.etatlibre();
     }
 }

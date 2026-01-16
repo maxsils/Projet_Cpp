@@ -54,6 +54,10 @@ int Livre :: getcode() const{
     return code;
 }
 
+int Livre :: getISBN() const{
+    return isbn;
+}
+
 string Livre :: getetat(){
     return etat;
 }
