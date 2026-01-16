@@ -13,7 +13,7 @@ class BD : public Livre {
         BD(const Livre&l, string);
         void affiche();
         string getdessinateur();
-        friend ostream& operator<<(ostream& out, BD &bd);
+        void afficher(ostream&) const;
 
         string getCategorie();
 };

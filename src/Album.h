@@ -12,7 +12,7 @@ class Album : public Livre {
         Album();
         Album(const Livre&l, string illustrations_album);
         void affiche();
-        friend ostream& operator<<(ostream& out, Album &al);
+        void afficher(ostream&) const;
         string getillustrations();
         string getCategorie();
 };

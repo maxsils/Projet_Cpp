@@ -18,10 +18,9 @@ int Piece_theatre :: getsiecle(){
     return siecle;
 }
 
-ostream& operator<<(ostream& out, Piece_theatre &pt){
-    out << (Livre&)pt;
-    out << ", Siecle : "<< pt.getsiecle();
-    return out;
+void Piece_theatre::afficher(ostream& out) const{
+    this->Livre::afficher(out);
+    out<<", Siecle : "<< siecle;
 }
 
 string Piece_theatre::getCategorie(){

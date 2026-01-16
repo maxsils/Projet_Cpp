@@ -18,10 +18,9 @@ string Album :: getillustrations(){
     return illustrations;
 }
 
-ostream& operator<<(ostream& out, Album &al){
-    out << (Livre&)al;
-    out << ", Illustrations : "<< al.getillustrations();
-    return out;
+void Album::afficher(ostream& out) const {
+    this->Livre::afficher(out);
+    out<<", Illustrations : "<<illustrations;
 }
 
 string Album::getCategorie(){

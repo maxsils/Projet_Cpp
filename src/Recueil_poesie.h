@@ -13,7 +13,7 @@ class Recueil_poesie : public Livre {
         Recueil_poesie(const Livre&l, string);
         void affiche();
         string getindicateur();
-        friend ostream& operator<<(ostream& out, Recueil_poesie &rp);
+        void afficher(ostream& os) const;
         string getCategorie();
 };
 

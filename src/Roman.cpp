@@ -18,10 +18,9 @@ string Roman :: getgenre(){
     return genre;
 }
 
-ostream& operator<<(ostream& out, Roman &r){
-    out << (Livre&)r;
-    out << ", Genre : "<< r.getgenre();
-    return out;
+void Roman::afficher(ostream& out) const {
+    this->Livre::afficher(out);
+    out << ", Genre : "<<genre;
 }
 
 string Roman::getCategorie(){

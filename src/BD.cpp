@@ -18,10 +18,9 @@ string BD :: getdessinateur(){
     return dessinateur;
 }
 
-ostream& operator<<(ostream& out, BD &bd){
-    out << (Livre&)bd;
-    out << ", Dessinateur : "<< bd.getdessinateur();
-    return out;
+void BD::afficher(ostream& out) const {
+    this->Livre::afficher(out);
+    out << ", Dessinateur : "<<dessinateur;
 }
 
 string BD::getCategorie(){

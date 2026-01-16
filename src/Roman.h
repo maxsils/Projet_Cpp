@@ -13,7 +13,7 @@ class Roman : public Livre {
         Roman(const Livre&l, string);
         void affiche();
         string getgenre();
-        friend ostream& operator<<(ostream& out, Roman &r);
+        void afficher(ostream&) const;
         string getCategorie();
 };
 

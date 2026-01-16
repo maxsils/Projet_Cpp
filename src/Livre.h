@@ -28,6 +28,8 @@ class Livre{
         // Virtual functions
         virtual void affiche();
 
+        virtual void afficher(ostream& os) const;
+
         // friend operator
         friend ostream& operator<<(ostream& out, const Livre &L);
         bool operator== (const Livre&) const;

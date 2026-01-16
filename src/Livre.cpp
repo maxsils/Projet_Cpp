@@ -24,9 +24,13 @@ Livre :: Livre(string a,string t,string e,int i,string p){
     compteur++;
 }
 
+void Livre::afficher(ostream& out) const {
+    out << "Code : "<< this->code << ", Auteur : " << this->auteur <<", Titre : "<< this->titre <<
+    ", Editeur : "<< this->editeur << ", ISBN : " <<this->isbn<<", Public :"<<this->publics<<", Etat : "<<this->etat;
+}
+
 ostream& operator<<(ostream& out, const Livre &L){
-    out << "Code : "<< L.code << ", Auteur : " << L.auteur <<", Titre : "<< L.titre <<
-    ", Editeur : "<< L.editeur << ", ISBN : " <<L.isbn<<", Public :"<<L.publics<<", Etat : "<<L.etat;
+    L.afficher(out);
     return out;
 }
 bool Livre :: operator== (const Livre& L) const{

@@ -18,10 +18,9 @@ string Recueil_poesie :: getindicateur(){
     return indicateur;
 }
 
-ostream& operator<<(ostream& out, Recueil_poesie &rp){
-    out << (Livre&)rp;
-    out << ", Indicateur : "<< rp.getindicateur();
-    return out;
+void Recueil_poesie::afficher(ostream& out) const {
+    this->Livre::afficher(out);
+    out << ", Indicateur : "<<indicateur;
 }
 
 string Recueil_poesie::getCategorie(){
