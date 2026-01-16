@@ -1,6 +1,8 @@
 #include "Livre.h"
 #include <cmath>
 
+int Livre::compteur = 1;
+
 Livre :: Livre(){
     code = -1;
     auteur = nullptr;
@@ -11,14 +13,15 @@ Livre :: Livre(){
     etat = nullptr;
 }
 
-Livre :: Livre(int c,string a,string t,string e,int i,string p){
-    code = c;
+Livre :: Livre(string a,string t,string e,int i,string p){
+    code = compteur;
     auteur = a;
     titre = t;
     editeur = e;
     isbn = i;
     publics = p;
     etat = "libre";
+    compteur++;
 }
 
 ostream& operator<<(ostream& out, Livre &L){

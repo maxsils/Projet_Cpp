@@ -13,10 +13,11 @@ class Livre{
         int isbn;
         string publics;
         string etat;
+        static int compteur;
     public : 
         // Constructeurs
         Livre();
-        Livre(int code_livre,string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre);
+        Livre(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre);
 
         // Permet de changer d'etat ("libre","emprunté","prêté")
         void changer_etat(string);
