@@ -27,7 +27,6 @@ class Livre{
         
         // Virtual functions
         virtual void affiche();
-
         virtual void afficher(ostream& os) const;
 
         // friend operator
@@ -37,6 +36,7 @@ class Livre{
 
         // getters
         int getcode() const;
+        int getISBN() const;
         string getetat();
         string virtual getCategorie() = 0;
     };

@@ -1,6 +1,8 @@
 #ifndef BIBLIOTHEQUE_H
 #define BIBLIOTHEQUE_H
 
+class Reseau;
+
 #include <iostream>
 using namespace std;
 #include "Liste.h"
@@ -11,19 +13,36 @@ class Bibliotheque{
         static int compteur;
         int code;
         string nom,adresse;
-        Liste<Livre*> liste_livres;
+        Liste<Livre*> catalogue;
+        Liste<Livre*> liste_prets_recus;
+        Reseau reseau;
     public:
+        // Constructeurs
         Bibliotheque();
         Bibliotheque(string nom,string adresse);
 
+        // Affichages
         void afficherLivres();
         void afficherLivres(string categorie);
-        void demanderLivre(int ISBN,int code_bibliotheque);
+
+        // Getter
+        Livre& getLivre(int code_livre);
+        int getCode() const;
+
+        // Ajout et suppression de livres
         void achatLivre(Livre& livre);
         void supprimerLivre(int code_livre);
-        void rendreLivresPretes();
+        
+        // Methodes liees au pret
+        Livre* chercherLivrePretable(int ISBN);
+        bool demandePret(int ISBN);
 
-        Livre& getLivre(int code_livre);
+        // Pret et retour de livres
+        void preterLivre(Livre& livre);
+        void recevoirPret(Livre& livre);
+        void rendrePret(Livre& livre);
+
+        void rendreLivresPretes();
 };
 
 #endif

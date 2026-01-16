@@ -10,6 +10,7 @@ class Liste {
 private:
     Noeud<T>* tete;
 public:
+    // Constructeurs et destructeur
     Liste(){
         tete=nullptr;
     }
@@ -22,10 +23,11 @@ public:
         }
     }
 
+    // Interdiction de copie
     Liste(const Liste<T>&) = delete;
-
     Liste&operator=(const Liste<T>&liste)=delete;
 
+    // Ajout et suppression de noeuds
     void ajouter(T info){
         Noeud<T>* nouveau = new Noeud<T>(info);
         nouveau->setSuivant(tete);
@@ -55,6 +57,29 @@ public:
 
         precedent->setSuivant(courant->getSuivant());
         delete courant;
+    }
+
+    void enlever(T info){
+        //Liste vide
+        if(tete==nullptr) throw string("Liste vide");
+
+        Noeud<T>*precedent=nullptr;
+        Noeud<T>*courant=tete;
+
+        //Suppression du premiere noeud
+        if(courant->getInfo()==info){
+            tete=courant->getSuivant();
+            return;
+        }
+        //Cas general
+        while(courant!=nullptr&&(courant->getInfo()!=info)){
+            precedent=courant;
+            courant=courant->getSuivant();  
+        }
+        
+        if(courant==nullptr) throw string("L'element n'a pas ete trouve");
+
+        precedent->setSuivant(courant->getSuivant());
     }
 
     void afficherTout() const {
