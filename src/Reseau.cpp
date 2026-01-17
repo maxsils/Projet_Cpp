@@ -1,4 +1,5 @@
 #include "Reseau.h"
+#include "Bibliotheque.h"
 
 int Reseau::compteur=1;
 

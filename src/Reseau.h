@@ -1,7 +1,12 @@
 #ifndef RESEAU_H
 #define RESEAU_H
 
-#include "Bibliotheque.h"
+#include <iostream>
+using namespace std;
+#include "Liste.h"
+#include "Livre.h"
+
+class Bibliotheque;
 
 class Reseau {
 private:
@@ -10,6 +15,11 @@ private:
     string nom;
     Liste<Bibliotheque*> liste_bibliotheques;
     Liste<int*> liste_pret;
+
+    // Methoder liees aux transactions
+    void ajouterTransaction(int code_livre,int code_preteur,int code_receveur);
+    void supprimerTransaction(int code_livre);
+    int* chercherTransaction(int code_livre);
 
 public:
     // Constructeur
@@ -27,11 +37,6 @@ public:
     // Traitement des pret : emprunt et retour
     bool traiterDemandePret(int ISBN,Bibliotheque* demandeuse);
     bool traiterRetourPret(Livre& livre,Bibliotheque* emprunteuse);
-
-    // Sous fonction utile au pret
-    void ajouterTransaction(int code_livre,int code_preteur,int code_receveur);
-    void supprimerTransaction(int code_livre);
-    int* chercherTransaction(int code_livre);
 };
 
 #endif

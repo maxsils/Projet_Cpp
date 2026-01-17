@@ -55,12 +55,12 @@ void Bibliotheque::setReseau(Reseau* reseau){
 
 void Bibliotheque::achatLivre(Livre& livre){
     if(livre.getcode()==-1) throw string("Erreur : Tentative d'ajout d'un livre sans donnees (code -1)\n");
-    Noeud<Livre*>*courant=this->catalogue.getTete();
+    Noeud<Livre*>*courant=catalogue.getTete();
     while(courant!=nullptr){
         if(courant->getInfo()->getcode()==livre.getcode()) throw string("Achat deja fait\n");
         courant=courant->getSuivant();
     }
-    this->catalogue.ajouter(&livre);
+    catalogue.ajouter(&livre);
 }
 
 void Bibliotheque::supprimerLivre(int code_livre){
@@ -96,7 +96,7 @@ void Bibliotheque::rendreUnPret(Livre&livre){
 }
 
 void Bibliotheque::rendreLesPrets(){
-    Noeud<Livre*>*courant=this->catalogue.getTete();
+    Noeud<Livre*>*courant=catalogue.getTete();
     while(courant!=nullptr){
         Livre*livre=courant->getInfo();
         rendrePret(*livre);
