@@ -60,6 +60,8 @@ int main() {
     // biblio.afficherLivres("BD");
     // cout<<"Essaie categorie Recueil de poesie"<<endl;
     // biblio.afficherLivres("Recueil de poesie");
+
+    cout<<"----------------------DEBUT----------------------\n";
     Reseau res2=Reseau("i");
     Reseau reseau=Reseau("Biblio Super");
     
@@ -67,11 +69,62 @@ int main() {
     Bibliotheque biblio2=Bibliotheque("Marseille","rue de Marseille");
 
     reseau.ajouterBibliotheque(biblio1);
-    reseau.ajouterBibliotheque(biblio2);
+    // reseau.ajouterBibliotheque(biblio2);        //Probleme on peut acheter plusieurs fois le meme livre avec differentes bibliotheques
 
-    reseau.afficher();
-    cout<<"Essaie de suppression\n";
-    reseau.supprimerBibliotheque(biblio1);
-    reseau.afficher();
-    cout<<res2;
+    BD maBD=BD("Nicola R","Le mangeur de chiens","Goliatte",12345,"Aldulte","Jules S");
+
+    cout<<"On ajoute\n";
+    cout<<maBD<<"\n";
+    cout<<"a la biblio de Lille\n";
+    biblio1.achatLivre(maBD);
+    biblio2.achatLivre(maBD);
+
+    cout<<"\n";
+    cout<<"On regarde les livre de la biblio de Lille\n";
+    cout<<"Debut\n";
+    biblio1.afficherLivres();
+    cout<<"fin\n";
+
+    cout<<"\n";
+    cout<<"On regarde les livre de la biblio de Marseille\n";
+    cout<<"Debut\n";
+    biblio2.afficherLivres();
+    cout<<"fin\n";
+
+    cout<<"\n";
+    cout<<"Marseille demande un pret pour 12345\n";
+    biblio2.demandePret(12345);
+    biblio2.demandePret(1234);
+
+    cout<<"\n";
+    cout<<"On regarde une nouvelle fois les livres de Marseille\n";
+    cout<<"Debut\n";
+    biblio2.afficherLivres();
+    cout<<"fin\n";
+
+    cout<<"\n";
+    cout<<"On regarde ceux de Lille\n";
+    cout<<"Debut\n";
+    biblio1.afficherLivres();
+    cout<<"fin\n";
+
+    cout<<"\n";
+    cout<<"Marseille rend le livre\n";
+    biblio2.rendreUnPret(maBD);
+
+    cout<<"\n";
+    cout<<"On regarde les livres de Marseille\n";
+    cout<<"Debut\n";
+    biblio2.afficherLivres();
+    cout<<"fin\n";
+
+    cout<<"\n";
+    cout<<"On regarde ceux de Lille\n";
+    cout<<"Debut\n";
+    biblio1.afficherLivres();
+    cout<<"fin\n";
+
+
+
+    cout<<"-------------FIN-------------";
 }
