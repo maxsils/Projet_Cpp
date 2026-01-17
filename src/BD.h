@@ -10,6 +10,7 @@ class BD : public Livre {
         string dessinateur;
     public :
         BD();
+        BD(string auteur,string titre,string editeur,int isbn,string publi,string dessinateur);
         BD(const Livre&l, string);
         void affiche();
         string getdessinateur();

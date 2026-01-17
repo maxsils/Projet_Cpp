@@ -5,6 +5,10 @@ BD :: BD() : Livre(){
     dessinateur="";
 }
 
+BD :: BD(string auteur,string titre,string editeur,int isbn,string publi,string dessinateur):Livre(auteur,titre,editeur,isbn,publi){
+    this->dessinateur=dessinateur;
+}
+
 BD :: BD(const Livre&l, string d):Livre(l){
     dessinateur=d;
 }

@@ -26,7 +26,7 @@ Livre :: Livre(string a,string t,string e,int i,string p){
 
 void Livre::afficher(ostream& out) const {
     out << "Code : "<< this->code << ", Auteur : " << this->auteur <<", Titre : "<< this->titre <<
-    ", Editeur : "<< this->editeur << ", ISBN : " <<this->isbn<<", Public :"<<this->publics<<", Etat : "<<this->etat;
+    ", Editeur : "<< this->editeur << ", ISBN : " <<this->isbn<<", Public : "<<this->publics<<", Etat : "<<this->etat;
 }
 
 ostream& operator<<(ostream& out, const Livre &L){
