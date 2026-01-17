@@ -39,17 +39,16 @@ ostream& operator<<(ostream& out, const Reseau& reseau){
 
 bool Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeur){
     if(this==nullptr) return false;                             //On teste que le reseau dont la bibliotheque appartient n'est pas nul
-
     Noeud<Bibliotheque*>*courant=liste_bibliotheques.getTete();
-
     // Parcours des bibliotheques
     while(courant!=nullptr){
         Bibliotheque* biblio=courant->getInfo();
         if(biblio->getCode()!=demandeur->getCode()){            // On verifie que biblio n'est pas le demandeur
             Livre* livre=biblio->chercherLivrePretable(ISBN);   // On cherche dans le catalogue de la biblio si elle a un livre libre avec ce ISBN
-            if(livre!=nullptr){                                 // On vérifie que ce livre existe
-                biblio->preterLivre(*livre);                    // La bibliotheque prete le livre       
+            if(livre!=nullptr){                                 // On verifie que ce livre existe
+                biblio->envoyerPret(*livre);                    // La bibliotheque prete le livre       
                 demandeur->recevoirPret(*livre);                // Le demandeur recoit le pret
+                ajouterTransaction(livre->getcode(),biblio->getCode(),demandeur->getCode());
                 return true;
             }
         }
@@ -58,7 +57,53 @@ bool Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeur){
     return false;
 }
 
-bool Reseau::traiterRetourPret(Livre& livre,Bibliotheque retourneur){
-    // A finir
-    return true;
+bool Reseau::traiterRetourPret(Livre& livre,Bibliotheque* emprunteuse){
+    int*transaction=chercherTransaction(livre.getcode());       // On cherche la transaction
+    int code_biblio_preteuse=transaction[1];
+    Noeud<Bibliotheque*>*courant=liste_bibliotheques.getTete();
+    // Parcours des bibliotheques
+    while(courant!=nullptr){
+        Bibliotheque*biblio=courant->getInfo();
+        if(biblio->getCode()==code_biblio_preteuse){            // On verifie s'il s'agit de la biblio qui a prete le livre
+            emprunteuse->rendrePret(livre);                     // La biblio emprunteuse rend le livre
+            biblio->retourPret(livre);                          // La biblio preteuse revoit son livre 
+            supprimerTransaction(*transaction);                 // La transaction est supprimee
+            return true;
+        }
+        courant=courant->getSuivant();
+    }
+    return false;
+}
+
+void Reseau::ajouterTransaction(int code_livre,int code_preteur,int code_receveur){
+    int*trasaction=new int[3];
+
+    trasaction[0]=code_livre;
+    trasaction[1]=code_preteur;
+    trasaction[2]=code_receveur;
+
+    liste_pret.ajouter(trasaction);
+}
+
+void Reseau::supprimerTransaction(int code_livre){
+    try{
+    int*transaction=chercherTransaction(code_livre);
+    liste_pret.supprimer(transaction);
+    delete[]transaction;
+    }
+    catch(string e){
+        throw e;
+    } 
+}
+
+int* Reseau::chercherTransaction(int code_livre){
+    Noeud<int*>*courant=liste_pret.getTete();
+    while(courant!=nullptr){
+        int*transaction=courant->getInfo();
+        if(transaction[0]==code_livre){
+            return transaction;
+        }
+        courant=courant->getSuivant();
+    }
+    throw string("Aucune transaction trouvee avec ce livre");
 }

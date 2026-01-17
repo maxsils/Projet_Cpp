@@ -86,33 +86,37 @@ Livre* Bibliotheque::chercherLivrePretable(int ISBN){
 }
 
 bool Bibliotheque::demandePret(int ISBN){
-    return reseau->traiterDemandePret(ISBN,this);
+    return reseau->traiterDemandePret(ISBN,this);           // On demande au reseau un pret
 }
 
-void Bibliotheque::preterLivre(Livre& livre){
+void Bibliotheque::rendreUnPret(Livre&livre){
+    if(livre.getetat()=="prete"){                           // Attention potentiel changement : etat !!!!
+        reseau->traiterRetourPret(livre,this);                   // On envoie notre demande de retour au reseau
+    }
+}
+
+void Bibliotheque::rendreLesPrets(){
+    Noeud<Livre*>*courant=this->catalogue.getTete();
+    while(courant!=nullptr){
+        Livre*livre=courant->getInfo();
+        rendrePret(*livre);
+    }
+}
+
+void Bibliotheque::envoyerPret(Livre& livre){
     livre.etatprete();
+    supprimerLivre(livre.getcode());
 }
 
 void Bibliotheque::recevoirPret(Livre& livre){
-    this->catalogue.ajouter(&livre);                    // On ajoute le livre a notre catalogue
-    this->liste_prets_recus.ajouter(&livre);            // On ajoute egalement livre a notre catalogue de prets recus
+    catalogue.ajouter(&livre);                              // On ajoute le livre a notre catalogue
 }
 
 void Bibliotheque::rendrePret(Livre& livre){
-    if(livre.getetat()=="emprunter"){                   // Attention potentiel changement etat !!!!
-        catalogue.supprimer(&livre);
-        liste_prets_recus.supprimer(&livre);
-        livre.etatlibre();
-    }
+    catalogue.supprimer(&livre);
 }
 
-void Bibliotheque::rendreLivresPretes(){
-    Noeud<Livre*>*courant=this->liste_prets_recus.getTete();
-    while(courant!=nullptr){
-        Livre* livre=courant->getInfo();
-        if(livre->getetat()=="preter"){                 // Attention potentiel changement etat !!!!
-            rendrePret(*livre);
-        }
-        courant=courant->getSuivant();
-    }
+void Bibliotheque::retourPret(Livre&livre){
+    catalogue.ajouter(&livre);
+    livre.etatlibre();
 }

@@ -9,6 +9,7 @@ private:
     int code;
     string nom;
     Liste<Bibliotheque*> liste_bibliotheques;
+    Liste<int*> liste_pret;
 
 public:
     // Constructeur
@@ -24,8 +25,13 @@ public:
     friend ostream& operator<<(ostream& out, const Reseau& reseau);
 
     // Traitement des pret : emprunt et retour
-    bool traiterDemandePret(int ISBN,Bibliotheque* demandeur);
-    bool traiterRetourPret(Livre& livre,Bibliotheque retourneur);
+    bool traiterDemandePret(int ISBN,Bibliotheque* demandeuse);
+    bool traiterRetourPret(Livre& livre,Bibliotheque* emprunteuse);
+
+    // Sous fonction utile au pret
+    void ajouterTransaction(int code_livre,int code_preteur,int code_receveur);
+    void supprimerTransaction(int code_livre);
+    int* chercherTransaction(int code_livre);
 };
 
 #endif

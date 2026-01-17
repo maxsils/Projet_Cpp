@@ -14,7 +14,6 @@ class Bibliotheque{
         int code;
         string nom,adresse;
         Liste<Livre*> catalogue;
-        Liste<Livre*> liste_prets_recus;
         Reseau* reseau;
     public:
         // Constructeurs
@@ -40,13 +39,16 @@ class Bibliotheque{
         // Methodes liees au pret
         Livre* chercherLivrePretable(int ISBN);
         bool demandePret(int ISBN);
+        void rendreUnPret(Livre& livre);
+        void rendreLesPrets();
 
-        // Pret et retour de livres
-        void preterLivre(Livre& livre);
+        // Creation d'un pret
+        void envoyerPret(Livre& livre);
         void recevoirPret(Livre& livre);
-        void rendrePret(Livre& livre);
 
-        void rendreLivresPretes();
+        // Fin d'un pret
+        void rendrePret(Livre& livre);
+        void retourPret(Livre& livre);
 };
 
 #endif
