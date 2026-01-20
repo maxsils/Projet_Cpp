@@ -9,10 +9,6 @@ BD :: BD(string auteur,string titre,string editeur,int isbn,string publi,string 
     this->dessinateur=dessinateur;
 }
 
-BD :: BD(const Livre&l, string d):Livre(l){
-    dessinateur=d;
-}
-
 void BD :: affiche(){
     Livre::affiche();
     cout<<", Dessinateur : "<<dessinateur<<endl;

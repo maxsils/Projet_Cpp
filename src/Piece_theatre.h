@@ -10,7 +10,7 @@ class Piece_theatre : public Livre {
         int siecle;
     public :
         Piece_theatre();
-        Piece_theatre(const Livre&l, int siecle_piece);
+        Piece_theatre(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre, int siecle_piece);
         void affiche();
         void afficher(ostream&) const;
         int getsiecle();

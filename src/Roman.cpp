@@ -5,7 +5,7 @@ Roman :: Roman(): Livre(){
     genre="";
 }
 
-Roman :: Roman(const Livre&l, string g):Livre(l){
+Roman :: Roman(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre, string g):Livre(auteur_livre,titre_livre,editeur_livre,isbn_livre,public_livre){
     genre=g;
 }
 
