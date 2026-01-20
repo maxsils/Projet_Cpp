@@ -60,7 +60,7 @@ exe_files/main.exe
 
 ## Exemple d'Utilisation
 
-Le point d'entree (main.cpp) execute generalement le scenario suivant :
+Le main.cpp execute le scenario suivant :
 
 1. Creation du reseau.
 2. Ajout de plusieurs bibliotheques au reseau (ex: "Biblio Marseille", "Biblio Lille").
