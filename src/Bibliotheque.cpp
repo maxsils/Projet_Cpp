@@ -85,7 +85,19 @@ Livre* Bibliotheque::chercherLivrePretable(int ISBN){
     return nullptr;
 }
 
-bool Bibliotheque::demandePret(int ISBN){
+Livre* Bibliotheque::chercherLivreEmpruntable(int ISBN){
+    Noeud<Livre*>*courant=catalogue.getTete();
+    while(courant!=nullptr){
+        Livre*livre=courant->getInfo();
+        if(livre->getISBN()==ISBN){
+            if(livre->getetat()!="emprunte") return livre;
+        }
+        courant=courant->getSuivant();
+    }
+    return nullptr;
+}
+
+Livre* Bibliotheque::demandePret(int ISBN){
     return reseau->traiterDemandePret(ISBN,this);           // On demande au reseau un pret//Si c'est true pret se réalise
 }
 

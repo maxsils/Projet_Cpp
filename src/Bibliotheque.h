@@ -25,7 +25,7 @@ class Bibliotheque{
         void retourPret(Livre& livre);
 
         // On laisse ces deux fonctions utiliser les methodes liees au pret
-        friend bool Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeuse);
+        friend Livre* Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeuse);
         friend bool Reseau::traiterRetourPret(Livre& livre,Bibliotheque* emprunteuse);
 
         // Methode pour retrouver un livre via son code
@@ -53,9 +53,11 @@ class Bibliotheque{
         
         // Methodes liees au pret
         Livre* chercherLivrePretable(int ISBN);
-        bool demandePret(int ISBN);
+        Livre* demandePret(int ISBN);
         void rendreUnPret(Livre& livre);
         void rendreLesPrets();
+
+        Livre* chercherLivreEmpruntable(int ISBN);
 };
 
 #endif

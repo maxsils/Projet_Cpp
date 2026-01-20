@@ -35,7 +35,7 @@ public:
     friend ostream& operator<<(ostream& out, const Reseau& reseau);
 
     // Traitement des pret : emprunt et retour
-    bool traiterDemandePret(int ISBN,Bibliotheque* demandeuse);
+    Livre* traiterDemandePret(int ISBN,Bibliotheque* demandeuse);
     bool traiterRetourPret(Livre& livre,Bibliotheque* emprunteuse);
 };
 

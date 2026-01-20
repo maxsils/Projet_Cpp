@@ -7,17 +7,30 @@ Adherent::Adherent(){
     limite_emprunt=-1;
 }
 
-Adherent::Adherent(string nom,string prenom,string adresse,int num_adherent,int code_bibliotheque,int limite_emprunt){
+Adherent::Adherent(string nom,string prenom,string adresse,int num_adherent,Bibliotheque* biblio,int limite_emprunt){
     this->nom=nom;
     this->prenom=prenom;
     this->adresse=adresse;
     this->num_adherent=num_adherent;
-    this->code_bibliotheque=code_bibliotheque;
+    this->biblio=biblio;
     this->limite_emprunt=limite_emprunt;
 }
 
-void Adherent::empruntLivre(int code_livre){
-    
+void Adherent::empruntLivre(int ISBN){
+    Livre* livre = biblio->chercherLivreEmpruntable(ISBN);
+    if (livre!=nullptr){
+        livre->etatemprunte();
+    }
+    else{
+        Livre* livre = biblio->demandePret(ISBN);
+        if (livre!=nullptr){
+            livre->etatemprunte();
+        }
+        else{
+            throw string("Aucun livre n'est disponible dans notre reseau");
+        }
+    }
+
 }
 
 void Adherent::rendreLivre(int code_livre){}

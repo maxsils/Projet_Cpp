@@ -38,8 +38,8 @@ ostream& operator<<(ostream& out, const Reseau& reseau){
     return out;
 }
 
-bool Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeur){
-    if(this==nullptr) return false;                             //On teste que le reseau dont la bibliotheque appartient n'est pas nul
+Livre* Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeur){
+    if(this==nullptr) return nullptr;                             //On teste que le reseau dont la bibliotheque appartient n'est pas nul
     Noeud<Bibliotheque*>*courant=liste_bibliotheques.getTete();
     // Parcours des bibliotheques
     while(courant!=nullptr){
@@ -50,12 +50,12 @@ bool Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeur){
                 biblio->envoyerPret(*livre);                    // La bibliotheque prete le livre       
                 demandeur->recevoirPret(*livre);                // Le demandeur recoit le pret
                 ajouterTransaction(livre->getcode(),biblio->getCode(),demandeur->getCode());
-                return true;
+                return livre;
             }
         }
         courant=courant->getSuivant();
     }
-    return false;
+    return nullptr;
 }
 
 bool Reseau::traiterRetourPret(Livre& livre,Bibliotheque* emprunteuse){
