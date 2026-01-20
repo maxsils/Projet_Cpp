@@ -98,12 +98,16 @@ Livre* Bibliotheque::chercherLivreEmpruntable(int ISBN){
 }
 
 Livre* Bibliotheque::demandePret(int ISBN){
-    return reseau->traiterDemandePret(ISBN,this);           // On demande au reseau un pret//Si c'est true pret se réalise
+    if(reseau!=nullptr){                                    //On teste que le reseau de bibliotheque existe
+        return reseau->traiterDemandePret(ISBN,this);       // On demande au reseau un pret//Si c'est true pret se réalise
+    }
+    else cout<<"Cette bibliotheque n'est connectee a aucun reseau";
+    return nullptr;
 }
 
 void Bibliotheque::rendreUnPret(Livre&livre){
     if(livre.getetat()=="prete"){                           // Attention potentiel changement : etat !!!!
-        reseau->traiterRetourPret(livre,this);                   // On envoie notre demande de retour au reseau
+        reseau->traiterRetourPret(livre,this);              // On envoie notre demande de retour au reseau
     }
 }
 

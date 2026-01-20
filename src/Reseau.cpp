@@ -39,7 +39,6 @@ ostream& operator<<(ostream& out, const Reseau& reseau){
 }
 
 Livre* Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeur){
-    if(this==nullptr) return nullptr;                             //On teste que le reseau dont la bibliotheque appartient n'est pas nul
     Noeud<Bibliotheque*>*courant=liste_bibliotheques.getTete();
     // Parcours des bibliotheques
     while(courant!=nullptr){
