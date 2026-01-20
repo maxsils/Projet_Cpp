@@ -18,8 +18,8 @@ class Adherent
     public:
         Adherent();
         Adherent(string nom,string prenom,string adresse,int num_adherent,Bibliotheque* biblio,int limite_emprunt);
-        void empruntLivre(int code_livre);
-        void rendreLivre(int code_livre);
+        void empruntLivre(int ISBN_livre);
+        void rendreLivre(int ISBN_livre);
 };
 
 #endif

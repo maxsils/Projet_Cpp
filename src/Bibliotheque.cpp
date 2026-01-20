@@ -132,3 +132,22 @@ void Bibliotheque::retourPret(Livre&livre){
     catalogue.ajouter(&livre);
     livre.etatlibre();
 }
+
+Livre* Bibliotheque::livreEmprunte(int ISBN){
+    Livre* livre = chercherLivreEmpruntable(ISBN);
+    if (livre!=nullptr){
+        livre->etatemprunte();
+        return livre;
+    }
+    else{
+        Livre* livre = demandePret(ISBN);
+        if (livre!=nullptr){
+            livre->etatemprunte();
+            return livre;
+        }
+        else{
+            return nullptr;
+        }
+    }
+
+}

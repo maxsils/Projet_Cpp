@@ -57,6 +57,9 @@ class Bibliotheque{
         void rendreUnPret(Livre& livre);
         void rendreLesPrets();
 
+        // Methodes d'emprunt
+        Livre* livreEmprunte(int ISBN);
+        void retourEmprunt(int code_livre);
         Livre* chercherLivreEmpruntable(int ISBN);
 };
 

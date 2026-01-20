@@ -17,20 +17,21 @@ Adherent::Adherent(string nom,string prenom,string adresse,int num_adherent,Bibl
 }
 
 void Adherent::empruntLivre(int ISBN){
-    Livre* livre = biblio->chercherLivreEmpruntable(ISBN);
-    if (livre!=nullptr){
-        livre->etatemprunte();
+    if (livres_empruntes.getTaille() >= limite_emprunt ){
+        cout<<"Erreur : la limite de livres est déà atteinte"<<endl;
     }
     else{
-        Livre* livre = biblio->demandePret(ISBN);
-        if (livre!=nullptr){
-            livre->etatemprunte();
+        Livre* livre =biblio->livreEmprunte(ISBN);
+        if(livre!=nullptr){
+            cout<<"Emprunt realise";
+            livres_empruntes.ajouter(livre);
         }
         else{
-            throw string("Aucun livre n'est disponible dans notre reseau");
+            cout<<"Aucun livre n'est disponible dans notre reseau"<<endl;
         }
     }
-
 }
 
-void Adherent::rendreLivre(int code_livre){}
+void Adherent::rendreLivre(int code_livre){
+    return biblio->retourEmprunt(code_livre);
+}
