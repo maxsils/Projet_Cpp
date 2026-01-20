@@ -5,7 +5,7 @@ Piece_theatre :: Piece_theatre() : Livre(){
     siecle=-1;
 }
 
-Piece_theatre :: Piece_theatre(const Livre&l, int s):Livre(l){
+Piece_theatre :: Piece_theatre(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre, int s):Livre(auteur_livre,titre_livre,editeur_livre,isbn_livre,public_livre){
     siecle=s;
 }
 

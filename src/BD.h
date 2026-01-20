@@ -11,7 +11,6 @@ class BD : public Livre {
     public :
         BD();
         BD(string auteur,string titre,string editeur,int isbn,string publi,string dessinateur);
-        BD(const Livre&l, string);
         void affiche();
         string getdessinateur();
         void afficher(ostream&) const;

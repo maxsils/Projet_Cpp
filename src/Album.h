@@ -10,7 +10,7 @@ class Album : public Livre {
         string illustrations;
     public :
         Album();
-        Album(const Livre&l, string illustrations_album);
+        Album(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre, string illustrations_album);
         void affiche();
         void afficher(ostream&) const;
         string getillustrations();

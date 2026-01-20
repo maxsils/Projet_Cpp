@@ -5,7 +5,7 @@ Recueil_poesie :: Recueil_poesie() : Livre(){
     indicateur="";
 }
 
-Recueil_poesie :: Recueil_poesie(const Livre&l, string i):Livre(l){
+Recueil_poesie :: Recueil_poesie(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre, string i):Livre(auteur_livre,titre_livre,editeur_livre,isbn_livre,public_livre){
     indicateur=i;
 }
 

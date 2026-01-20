@@ -10,7 +10,7 @@ class Roman : public Livre {
         string genre;
     public :
         Roman();
-        Roman(const Livre&l, string);
+        Roman(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre, string);
         void affiche();
         string getgenre();
         void afficher(ostream&) const;

@@ -5,7 +5,7 @@ Album :: Album() : Livre(){
     illustrations="";
 }
 
-Album :: Album(const Livre&l, string i):Livre(l){
+Album :: Album(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre, string i):Livre(auteur_livre,titre_livre,editeur_livre,isbn_livre,public_livre){
     illustrations=i;
 }
 

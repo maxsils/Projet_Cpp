@@ -10,7 +10,7 @@ class Recueil_poesie : public Livre {
         string indicateur;
     public :
         Recueil_poesie();
-        Recueil_poesie(const Livre&l, string);
+        Recueil_poesie(string auteur_livre,string titre_livre,string editeur_livre,int isbn_livre,string public_livre, string);
         void affiche();
         string getindicateur();
         void afficher(ostream& os) const;
