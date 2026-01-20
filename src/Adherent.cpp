@@ -23,7 +23,7 @@ void Adherent::empruntLivre(int ISBN){
     else{
         Livre* livre =biblio->livreEmprunte(ISBN);
         if(livre!=nullptr){
-            cout<<"Emprunt realise";
+            cout<<"Emprunt realise"<<endl;
             livres_empruntes.ajouter(livre);
         }
         else{
@@ -33,5 +33,6 @@ void Adherent::empruntLivre(int ISBN){
 }
 
 void Adherent::rendreLivre(int code_livre){
+    cout<<"Livre rendu"<<endl;
     return biblio->retourEmprunt(code_livre);
 }
