@@ -53,3 +53,4 @@ CMakeUserPresets.json
 
 # Adding line to ignore .vscode/
 .vscode/
+.json
