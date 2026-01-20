@@ -36,3 +36,7 @@ void Adherent::rendreLivre(int code_livre){
     cout<<"Livre rendu"<<endl;
     return biblio->retourEmprunt(code_livre);
 }
+
+void Adherent::afficherLivres(){
+    livres_empruntes.afficherTout();
+}

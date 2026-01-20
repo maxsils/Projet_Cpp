@@ -20,6 +20,7 @@ class Adherent
         Adherent(string nom,string prenom,string adresse,int num_adherent,Bibliotheque* biblio,int limite_emprunt);
         void empruntLivre(int ISBN_livre);
         void rendreLivre(int ISBN_livre);
+        void afficherLivres();
 };
 
 #endif
