@@ -108,3 +108,13 @@ int* Reseau::chercherTransaction(int code_livre){
     }
     throw string("Aucune transaction trouvee avec ce livre");
 }
+
+bool Reseau :: livrePrete(int code_livre){
+    try{
+        chercherTransaction(code_livre);
+        return true;
+    }
+    catch(string e){
+        return false;
+    }
+}

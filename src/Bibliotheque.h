@@ -28,9 +28,6 @@ class Bibliotheque{
         friend Livre* Reseau::traiterDemandePret(int ISBN,Bibliotheque* demandeuse);
         friend bool Reseau::traiterRetourPret(Livre& livre,Bibliotheque* emprunteuse);
 
-        // Methode pour retrouver un livre via son code
-        Livre& getLivre(int code_livre);
-
     public:
         // Constructeurs
         Bibliotheque();
@@ -46,6 +43,9 @@ class Bibliotheque{
 
         // Setter
         void setReseau(Reseau* reseau);
+
+        // Methode pour retrouver un livre via son code
+        Livre& getLivre(int code_livre);
 
         // Ajout et suppression de livres
         void achatLivre(Livre& livre);

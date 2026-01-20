@@ -16,7 +16,7 @@ private:
     Liste<Bibliotheque*> liste_bibliotheques;
     Liste<int*> liste_pret;
 
-    // Methoder liees aux transactions
+    // Methodes liees aux transactions
     void ajouterTransaction(int code_livre,int code_preteur,int code_receveur);
     void supprimerTransaction(int code_livre);
     int* chercherTransaction(int code_livre);
@@ -37,6 +37,9 @@ public:
     // Traitement des pret : emprunt et retour
     Livre* traiterDemandePret(int ISBN,Bibliotheque* demandeuse);
     bool traiterRetourPret(Livre& livre,Bibliotheque* emprunteuse);
+
+    // Le livre est il prete 
+    bool livrePrete(int code_livre);
 };
 
 #endif

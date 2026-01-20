@@ -149,5 +149,15 @@ Livre* Bibliotheque::livreEmprunte(int ISBN){
             return nullptr;
         }
     }
-
 }
+
+void Bibliotheque :: retourEmprunt(int code_livre){
+    Livre& livre= getLivre(code_livre);
+    if(reseau->livrePrete(code_livre)){
+        livre.etatprete();
+    }
+    else{
+        livre.etatlibre();
+    }
+}
+

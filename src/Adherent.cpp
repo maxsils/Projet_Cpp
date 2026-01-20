@@ -33,6 +33,7 @@ void Adherent::empruntLivre(int ISBN){
 }
 
 void Adherent::rendreLivre(int code_livre){
+    livres_empruntes.supprimer(&(biblio->getLivre(code_livre)));
     cout<<"Livre rendu"<<endl;
     return biblio->retourEmprunt(code_livre);
 }
