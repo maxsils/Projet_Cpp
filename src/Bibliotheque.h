@@ -7,6 +7,8 @@ using namespace std;
 #include "Livre.h"
 #include "Reseau.h"
 
+class Adherent;
+
 class Bibliotheque{
     private:
         static int compteur_code_biblio;
@@ -50,6 +52,9 @@ class Bibliotheque{
         // Ajout et suppression de livres
         void achatLivre(Livre& livre);
         void supprimerLivre(int code_livre);
+
+        // Ajout d'un adherent
+        Adherent* creationAdherent(string nom,string prenom,string adresse);
         
         // Methodes liees au pret
         Livre* chercherLivrePretable(int ISBN);

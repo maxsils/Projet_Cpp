@@ -1,5 +1,6 @@
 #include "Bibliotheque.h"
 #include "Reseau.h"
+#include "Adherent.h"
 
 int Bibliotheque::compteur_code_biblio = 1;
 
@@ -7,6 +8,7 @@ Bibliotheque::Bibliotheque(){
     code=-1;
     nom="";
     adresse="";
+    compteur_adherent=0;
 }
 
 Bibliotheque::Bibliotheque(string nom,string adresse){
@@ -14,6 +16,7 @@ Bibliotheque::Bibliotheque(string nom,string adresse){
     this->nom=nom;
     this->adresse=adresse;
     compteur_code_biblio++;
+    compteur_adherent=0;
 }
 
 void Bibliotheque::afficherLivres(){
@@ -71,6 +74,11 @@ void Bibliotheque::supprimerLivre(int code_livre){
     catch(string e){
         cout<<e;
     }
+}
+
+Adherent* Bibliotheque::creationAdherent(string nom,string prenom,string adresse){
+    compteur_adherent++;
+    return new Adherent(nom,prenom,adresse,compteur_adherent,this,2);
 }
 
 Livre* Bibliotheque::chercherLivrePretable(int ISBN){
