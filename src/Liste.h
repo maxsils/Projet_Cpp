@@ -70,6 +70,16 @@ public:
     Noeud<T>* getTete(){
         return tete;
     }
+
+    int getTaille(){
+        int taille=0;
+        Noeud<T>*courant=tete;
+        while(courant!=nullptr){
+            taille++;
+            courant=courant->getSuivant();
+        }
+        return taille;
+    }
 };
 
 #endif
