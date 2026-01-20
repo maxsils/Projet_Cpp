@@ -7,124 +7,115 @@
 #include "src/Roman.h"
 #include "src/Bibliotheque.h"
 #include "src/Reseau.h"
+#include "src/Adherent.h"
+
+#include <iostream>
+#include <string>
+using namespace std;
 
 int main() {
-    // Liste<int> liste;
-    // liste.ajouter(2); // a
-    // liste.ajouter(3); // b
-    // liste.ajouter(4); // c
-    // liste.ajouter(1); // d
+    cout << "=== DEMARRAGE DU SYSTEME DE GESTION DE BIBLIOTHEQUE ===\n" << endl;
 
-    // try {
-    //     cout << "Liste apres ajout :\n";
-    //     liste.afficherTout();
+    // ---------------------------------------------------------
+    // 1. Creation du reseau
+    // ---------------------------------------------------------
+    cout << "1. [Creation] Initialisation du Reseau national..." << endl;
+    Reseau monReseau("Reseau National de France");
 
-    //     cout << "Suppression de 1 (tete) :\n";
-    //     liste.supprimer(1);
-    //     liste.afficherTout();
-
-    //     cout << "Suppression de 3 (milieu) :\n";
-    //     liste.supprimer(3);
-    //     liste.afficherTout();
-
-    //     cout << "Suppression de 2 :\n";
-    //     liste.supprimer(2);
-    //     liste.afficherTout();
-
-    //     cout << "Suppression de 4 (milieu) :\n";
-    //     liste.supprimer(4);
-    //     liste.afficherTout();
-    //     liste.supprimer(1);
-    // }
-    // catch(char const* e){
-    //     cout<<e<<"\n";
-    // }
-    // cout<<"FIN";
-    // std::cout << "Lancement du programme..." << std::endl;
-    // BD bd;
-    // Album album;
-    // Recueil_poesie recueil_poesie;
-    // Bibliotheque biblio;
-    // try{
-    // biblio.achatLivre(bd);
-    // biblio.achatLivre(album);
-    // biblio.achatLivre(recueil_poesie);
-    // biblio.afficherLivres();
-    // }
-    // catch(string a){cout<<a;}
-
-    // try{biblio.supprimerLivre(0);}
-    // catch(string e){cout<<e;}
-
-    // cout<<"Essaie categorie BD"<<endl;
-    // biblio.afficherLivres("BD");
-    // cout<<"Essaie categorie Recueil de poesie"<<endl;
-    // biblio.afficherLivres("Recueil de poesie");
-
-    cout<<"----------------------DEBUT----------------------\n";
-    Reseau res2=Reseau("i");
-    Reseau reseau=Reseau("Biblio Super");
+    // ---------------------------------------------------------
+    // 2. Ajout de plusieurs bibliotheques au reseau
+    // ---------------------------------------------------------
+    cout << "2. [Configuration] Creation et connexion des bibliotheques..." << endl;
     
-    Bibliotheque biblio1=Bibliotheque("Lille","rue de Lille");
-    Bibliotheque biblio2=Bibliotheque("Marseille","rue de Marseille");
+    // Création des bibliothèques
+    Bibliotheque biblioParis("Biblio Paris", "Paris");
+    Bibliotheque biblioLyon("Biblio Lyon", "Lyon");
 
-    reseau.ajouterBibliotheque(biblio1);
-    reseau.ajouterBibliotheque(biblio2);        //Probleme on peut acheter plusieurs fois le meme livre avec differentes bibliotheques
+    // Connexion bidirectionnelle (Le réseau connait la biblio, la biblio connait le réseau)
+    monReseau.ajouterBibliotheque(biblioParis);
+    biblioParis.setReseau(&monReseau);
 
-    BD maBD=BD("Nicola R","Le mangeur de chiens","Goliatte",12345,"Aldulte","Jules S");
+    monReseau.ajouterBibliotheque(biblioLyon);
+    biblioLyon.setReseau(&monReseau);
 
-    cout<<"On ajoute\n";
-    cout<<maBD<<"\n";
-    cout<<"a la biblio de Lille\n";
-    biblio1.achatLivre(maBD);
-    // biblio2.achatLivre(maBD);
+    // ---------------------------------------------------------
+    // 3. Achat de livres par les bibliotheques
+    // ---------------------------------------------------------
+    cout << "3. [Stock] Achat des livres..." << endl;
 
-    cout<<"\n";
-    cout<<"On regarde les livre de la biblio de Lille\n";
-    cout<<"Debut\n";
-    biblio1.afficherLivres();
-    cout<<"fin\n";
+    // Livre 1 : Un Roman acheté par Paris (ISBN 100)
+    // On utilise 'new' car la Liste stocke des pointeurs et gérera la mémoire
+    Roman* roman1 = new Roman("Victor Hugo", "Les Miserables", "Gallimard", 100, "Adulte", "Historique");
+    biblioParis.achatLivre(*roman1);
+    cout << "   -> Paris a achete : Les Miserables (ISBN 100)" << endl;
 
-    cout<<"\n";
-    cout<<"On regarde les livre de la biblio de Marseille\n";
-    cout<<"Debut\n";
-    biblio2.afficherLivres();
-    cout<<"fin\n";
+    // Livre 2 : Une BD achetée par Lyon (ISBN 200)
+    BD* bd1 = new BD("Herge", "Tintin au Tibet", "Casterman", 200, "Jeunesse", "Herge");
+    biblioLyon.achatLivre(*bd1);
+    cout << "   -> Lyon a achete : Tintin au Tibet (ISBN 200)" << endl;
 
-    cout<<"\n";
-    cout<<"Marseille demande un pret pour 12345\n";
-    biblio2.demandePret(12345);
-    biblio2.demandePret(1234);
+    // Livre 3 : Une Pièce de théâtre achetée par Lyon (ISBN 300)
+    Piece_theatre* piece1 = new Piece_theatre("Moliere", "L'Avare", "Larousse", 300, "Tout public", 17);
+    biblioLyon.achatLivre(*piece1);
+    cout << "   -> Lyon a achete : L'Avare (ISBN 300)" << endl;
 
-    cout<<"\n";
-    cout<<"On regarde une nouvelle fois les livres de Marseille\n";
-    cout<<"Debut\n";
-    biblio2.afficherLivres();
-    cout<<"fin\n";
+    cout << endl;
 
-    cout<<"\n";
-    cout<<"On regarde ceux de Lille\n";
-    cout<<"Debut\n";
-    biblio1.afficherLivres();
-    cout<<"fin\n";
+    // ---------------------------------------------------------
+    // 4. Inscription d'un adherent
+    // ---------------------------------------------------------
+    cout << "4. [Inscription] Nouvel adherent a Paris..." << endl;
+    // Adherent inscrit à la bibliothèque de Paris avec une limite de 3 livres
+    Adherent adherentJean("Dupont", "Jean", "Paris 14eme", 1, &biblioParis, 3);
+    
+    cout << "   -> Adherent cree : Jean Dupont (Inscrit a Biblio Paris)" << endl;
+    cout << endl;
 
-    cout<<"\n";
-    cout<<"Marseille rend le livre\n";
-    biblio2.rendreUnPret(maBD);
+    // ---------------------------------------------------------
+    // 5. Emprunt local
+    // ---------------------------------------------------------
+    cout << "5. [Emprunt Local] Tentative d'emprunt d'un livre local..." << endl;
+    cout << "   -> Jean veut 'Les Miserables' (ISBN 100) qui est a Paris." << endl;
+    
+    // Jean emprunte le livre 100 directement
+    adherentJean.empruntLivre(100);
+    
+    cout << "   -> Verification des emprunts de Jean :" << endl;
+    adherentJean.afficherLivres();
+    cout << endl;
 
-    cout<<"\n";
-    cout<<"On regarde les livres de Marseille\n";
-    cout<<"Debut\n";
-    biblio2.afficherLivres();
-    cout<<"fin\n";
+    // ---------------------------------------------------------
+    // 6. Demande reseau
+    // ---------------------------------------------------------
+    cout << "6. [Emprunt Reseau] Tentative d'emprunt d'un livre distant..." << endl;
+    cout << "   -> Jean veut 'Tintin' (ISBN 200). Ce livre est a Lyon, PAS a Paris." << endl;
 
-    cout<<"\n";
-    cout<<"On regarde ceux de Lille\n";
-    cout<<"Debut\n";
-    biblio1.afficherLivres();
-    cout<<"fin\n";
+    // Etape A : On vérifie si le livre est dispo localement (Simulé ici par une recherche qui échouerait)
+    // Etape B : La bibliothèque de Paris demande au réseau
+    cout << "   -> [Biblio Paris] : Livre absent. Interrogation du Reseau..." << endl;
+    
+    // La méthode demandePret va chercher le livre ailleurs, le changer de biblio, et le rendre dispo à Paris
+    Livre* livreTransfere = biblioParis.demandePret(200);
 
+    if (livreTransfere != nullptr) {
+        cout << "   -> [Succes Reseau] Le livre a ete transfere de Lyon vers Paris !" << endl;
+        
+        // Etape C : Maintenant que le livre est arrivé à Paris, Jean peut l'emprunter
+        cout << "   -> Jean finalise l'emprunt..." << endl;
+        adherentJean.empruntLivre(200);
+    } else {
+        cout << "   -> [Echec] Le livre est introuvable sur le reseau." << endl;
+    }
 
+    // ---------------------------------------------------------
+    // Verification finale
+    // ---------------------------------------------------------
+    cout << "\n=== ETAT FINAL ===" << endl;
+    cout << "Livres empruntes par Jean :" << endl;
+    adherentJean.afficherLivres();
 
-    cout<<"-------------FIN-------------";
+    cout << "\nTransactions sur le Reseau :" << endl;
+    monReseau.afficher(); // Affiche les échanges entre bibliothèques
+
+    return 0;
 }
