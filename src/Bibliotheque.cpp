@@ -1,7 +1,7 @@
 #include "Bibliotheque.h"
 #include "Reseau.h"
 
-int Bibliotheque::compteur = 1;
+int Bibliotheque::compteur_code_biblio = 1;
 
 Bibliotheque::Bibliotheque(){
     code=-1;
@@ -10,10 +10,10 @@ Bibliotheque::Bibliotheque(){
 }
 
 Bibliotheque::Bibliotheque(string nom,string adresse){
-    this->code=compteur;
+    this->code=compteur_code_biblio;
     this->nom=nom;
     this->adresse=adresse;
-    compteur++;
+    compteur_code_biblio++;
 }
 
 void Bibliotheque::afficherLivres(){
@@ -86,7 +86,7 @@ Livre* Bibliotheque::chercherLivrePretable(int ISBN){
 }
 
 bool Bibliotheque::demandePret(int ISBN){
-    return reseau->traiterDemandePret(ISBN,this);           // On demande au reseau un pret
+    return reseau->traiterDemandePret(ISBN,this);           // On demande au reseau un pret//Si c'est true pret se réalise
 }
 
 void Bibliotheque::rendreUnPret(Livre&livre){

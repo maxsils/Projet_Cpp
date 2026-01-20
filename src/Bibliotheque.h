@@ -9,8 +9,9 @@ using namespace std;
 
 class Bibliotheque{
     private:
-        static int compteur;
+        static int compteur_code_biblio;
         int code;
+        int compteur_adherent;
         string nom,adresse;
         Liste<Livre*> catalogue;
         Reseau* reseau;
