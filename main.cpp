@@ -69,7 +69,7 @@ int main() {
     Bibliotheque biblio2=Bibliotheque("Marseille","rue de Marseille");
 
     reseau.ajouterBibliotheque(biblio1);
-    // reseau.ajouterBibliotheque(biblio2);        //Probleme on peut acheter plusieurs fois le meme livre avec differentes bibliotheques
+    reseau.ajouterBibliotheque(biblio2);        //Probleme on peut acheter plusieurs fois le meme livre avec differentes bibliotheques
 
     BD maBD=BD("Nicola R","Le mangeur de chiens","Goliatte",12345,"Aldulte","Jules S");
 
@@ -77,7 +77,7 @@ int main() {
     cout<<maBD<<"\n";
     cout<<"a la biblio de Lille\n";
     biblio1.achatLivre(maBD);
-    biblio2.achatLivre(maBD);
+    // biblio2.achatLivre(maBD);
 
     cout<<"\n";
     cout<<"On regarde les livre de la biblio de Lille\n";
